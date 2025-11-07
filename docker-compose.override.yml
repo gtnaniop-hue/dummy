@@ -1,0 +1,19 @@
+# Development override file
+# This file extends docker-compose.yml for development
+version: '3.8'
+
+services:
+  frontend:
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  backend:
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=true
+    command: python main.py

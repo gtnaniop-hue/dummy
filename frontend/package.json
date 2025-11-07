@@ -1,0 +1,24 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend application with Node.js build and static server",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "mkdir -p dist && echo 'body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }' > dist/style.css",
+    "build:js": "mkdir -p dist && echo 'console.log(\"Frontend app loaded\");' > dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["frontend", "nodejs", "docker"],
+  "author": "",
+  "license": "ISC"
+}
