@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection History</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Detection App</h1>
+            <ul>
+                <li><a href="#" id="home-link">Home</a></li>
+                <li><a href="#" id="history-link">History</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home-section" class="page-section active">
+            <h2>Upload Image for Detection</h2>
+            <div class="upload-container">
+                <input type="file" id="file-input" accept="image/*" />
+                <button id="analyze-btn">Analyze</button>
+            </div>
+            <div id="current-detection" class="detection-result"></div>
+        </section>
+
+        <section id="history-section" class="page-section">
+            <div class="history-header">
+                <h2>Detection History</h2>
+                <button id="clear-history-btn">Clear History</button>
+            </div>
+            <div id="history-list" class="history-list"></div>
+            <div id="empty-history" class="empty-state" style="display: none;">
+                <p>No detection history available. Upload and analyze images to see them here.</p>
+            </div>
+        </section>
+
+        <section id="details-section" class="page-section">
+            <button id="back-to-history" class="back-btn">← Back to History</button>
+            <div id="detection-details"></div>
+        </section>
+    </main>
+
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Analyzing...</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
