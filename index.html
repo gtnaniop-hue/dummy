@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍎 Calorie Tracker</h1>
+            <div class="date-navigation">
+                <button id="prevDay" aria-label="Previous day">←</button>
+                <span id="currentDate"></span>
+                <button id="nextDay" aria-label="Next day">→</button>
+                <button id="todayBtn" aria-label="Go to today">Today</button>
+            </div>
+            <button id="settingsBtn" class="settings-btn" aria-label="Settings">⚙️</button>
+        </header>
+
+        <main>
+            <section class="entry-section">
+                <h2>Add Food Entry</h2>
+                <form id="foodForm">
+                    <div class="form-group">
+                        <label for="foodName">Food Name</label>
+                        <input type="text" id="foodName" name="foodName" required placeholder="e.g., Chicken Salad" autocomplete="off">
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="calories">Calories</label>
+                        <input type="number" id="calories" name="calories" required min="1" max="10000" placeholder="e.g., 350">
+                        <span class="error-message" id="caloriesError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mealTime">Time</label>
+                        <input type="time" id="mealTime" name="mealTime" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Add Entry</button>
+                </form>
+            </section>
+
+            <section class="dashboard-section">
+                <div class="summary-card">
+                    <h2>Daily Summary</h2>
+                    <div class="chart-container">
+                        <canvas id="calorieChart"></canvas>
+                        <div class="chart-center">
+                            <span id="caloriesRemaining">2000</span>
+                            <small>remaining</small>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">Goal</span>
+                            <span id="dailyGoal" class="stat-value">2000</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Consumed</span>
+                            <span id="caloriesConsumed" class="stat-value consumed">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Percentage</span>
+                            <span id="caloriePercentage" class="stat-value">0%</span>
+                        </div>
+                    </div>
+                    <div id="progressBar" class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="weekly-summary">
+                    <h3>Weekly Overview</h3>
+                    <div class="weekly-stats">
+                        <div class="weekly-stat">
+                            <span class="weekly-label">Avg Daily</span>
+                            <span id="weeklyAverage" class="weekly-value">0</span>
+                        </div>
+                        <div class="weekly-stat">
+                            <span class="weekly-label">Total This Week</span>
+                            <span id="weeklyTotal" class="weekly-value">0</span>
+                        </div>
+                        <div class="weekly-stat">
+                            <span class="weekly-label">Days Under Goal</span>
+                            <span id="daysUnderGoal" class="weekly-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meals-section">
+                    <h3>Today's Meals</h3>
+                    <div id="mealsList" class="meals-list">
+                        <p class="empty-state">No entries yet. Add your first meal above!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" aria-label="Close settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="dailyGoalInput">Daily Calorie Goal</label>
+                    <input type="number" id="dailyGoalInput" min="500" max="10000" value="2000">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="notificationsEnabled" checked>
+                        Enable notifications
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveSettings" class="submit-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
