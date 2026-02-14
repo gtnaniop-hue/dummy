@@ -3,12 +3,10 @@
  */
 
 import {
-    formatDate,
     dateToISO,
     addDays,
     getTodayISO,
-    getCurrentTime,
-    sanitize
+    getCurrentTime
 } from './utils.js';
 
 import {
@@ -23,18 +21,15 @@ import {
     hasNotificationBeenShown,
     markNotificationAsShown,
     getSettings,
-    saveSettings,
-    clearNotificationsForDate
+    saveSettings
 } from './storage.js';
 
 import {
     initChart,
-    updateChart,
-    getColorForPercentage
+    updateChart
 } from './chart.js';
 
 import {
-    showToast,
     checkThresholds,
     showEntryAdded,
     showEntryUpdated,
