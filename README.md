@@ -30,6 +30,38 @@ npx serve .
 # Then visit http://localhost:3000
 ```
 
+### Deployment to Vercel
+
+Deploy this app to Vercel in just a few steps:
+
+**Option 1: Deploy via Vercel CLI**
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login to Vercel (opens browser)
+vercel login
+
+# Deploy to production
+vercel --prod
+```
+
+**Option 2: Deploy via GitHub Integration**
+1. Push this repository to GitHub
+2. Visit [vercel.com/new](https://vercel.com/new)
+3. Import your GitHub repository
+4. Vercel will auto-detect the static site settings
+5. Click "Deploy"
+
+**Option 3: Deploy via Vercel Dashboard**
+1. Go to [vercel.com](https://vercel.com) and sign in
+2. Click "Add New Project"
+3. Import your Git repository
+4. Select "Static Site" framework preset
+5. Deploy!
+
+The `vercel.json` configuration file is already included for optimal deployment settings.
+
 ### Usage
 
 1. **Set Your Goal**: Click the ⚙️ settings button to set your daily calorie goal (default: 2000 calories)
