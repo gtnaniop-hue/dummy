@@ -2,6 +2,16 @@
  * UI rendering and updates for Calorie Tracker
  */
 
+import {
+    formatDate,
+    calculatePercentage,
+    sanitize,
+    formatTime,
+    getCurrentTime
+} from './utils.js';
+
+import { getCalorieGoal, getSettings } from './storage.js';
+
 /**
  * Update the current date display
  * @param {Date} date - The date to display
@@ -30,9 +40,13 @@ export function updateDashboardStats(consumed, goal) {
     if (percentageElement) {
         const percentage = calculatePercentage(consumed, goal);
         percentageElement.textContent = `${percentage}%`;
-        
+
         // Update color based on percentage
         percentageElement.classList.remove('warning', 'danger');
+        if (consumedElement) {
+            consumedElement.classList.remove('warning', 'danger');
+        }
+
         if (percentage >= 80 && percentage < 100) {
             percentageElement.classList.add('warning');
             if (consumedElement) consumedElement.classList.add('warning');
@@ -300,17 +314,4 @@ export function setButtonLoading(button, isLoading, originalText) {
         button.disabled = false;
         button.textContent = originalText || button.dataset.originalText || 'Submit';
     }
-}
-
-// Import helper functions
-import { formatDate, calculatePercentage, sanitize, formatTime, getCurrentTime, getCalorieGoal, getSettings } from './utils.js';
-import { getCalorieGoal as storageGetGoal, getSettings as storageGetSettings } from './storage.js';
-
-// Re-export for use in this module
-function getCalorieGoal() {
-    return storageGetGoal();
-}
-
-function getSettings() {
-    return storageGetSettings();
 }
